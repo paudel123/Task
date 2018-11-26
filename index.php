@@ -104,46 +104,35 @@ class Tasks{
         $time_part = explode(":", $time);
         $hr = $time_part[0];
         $min = $time_part[1];
-
-        //echo "<br />" . $a = (12 - ( int ) $hr ) * 30;
-        //echo "<br />" . $b = (60 - ( int ) $min ) * 6;
+        
+        //Obtin the hour hand movement corresponding to minute hand
         if ((int) $min == 0){
             $min = 60;
             $hr_part = 0;
         }
         else 
             $hr_part = 30 / ( 60 / ( int ) $min );
-
+        
+        //Find how far the hour and minute hands are
         if ($hr > 6)
             $a = abs( (int) $min + (60 - (int) $hr * 5 ));
         else
             $a = abs( (int) $min - (int) $hr * 5 );
-
-        echo "<br />pin diff : : " . $a ; #= abs( (int) $min + (60 - (int) $hr * 5 ));
-
+        
+        //If the gap is > 30 i.e. they are away more than half of clock 
+        //So the angle is greater than 180 degree
+        //Subtact the greater angle from 360
+        
         if ( $a > 30 ){
             $dif = (360 - $a * 6);
             $angle = abs($dif + $hr_part);
         }
-        else{
+        else{ // No need to subtract because angle is < 180
             $dif = $a * 6;
             $angle = abs($dif - $hr_part);
         }
-
-        //$dif = abs( (int) $hr * 5 - (int) $min + (60 - (int) $hr * 5 ) ) * 6;
-
-        // if ($dif >= 180){
-        //    $dif = 360 - $dif;
-        //     $angle = abs($dif + $hr_part);
-        // }
-        // else{
-        //     $angle = abs($dif - $hr_part);
-        // }
-
+        
         echo "<br /> Angle : " . $angle ;
- 
-        //if($a >= 180 and $b >= 180)
-        //    echo $ang = abs( ( 360 - $a ) - ( 360 - $b ) ) - $hr_part;
     }
 }
 
