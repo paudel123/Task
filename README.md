@@ -1,5 +1,6 @@
 # Task
 To check the Palindrome string
+<br />
 Function checkPalindrome($string)
 
 To check the occurance of alphabets in given string
